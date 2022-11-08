@@ -14,7 +14,7 @@ const Navbar = () => {
     const value = r.current.value || 'Mumbai';
     s.setLoading(true)
     s.setSearch(value);
-    const data = await fetchData(s.search);
+    const data = await fetchData(value);
     s.setLoading(false)
 
   }
