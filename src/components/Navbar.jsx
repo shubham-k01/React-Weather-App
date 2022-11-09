@@ -12,8 +12,9 @@ const Navbar = () => {
 
   const handleClick = async ()=>{
     const value = r.current.value || 'Mumbai';
-    s.setLoading(true)
-    s.setSearch(value);
+    await s.setLoading(true)
+    console.log(s.loading);
+    await s.setSearch(value);
     const data = await fetchData(value);
     s.setLoading(false)
 

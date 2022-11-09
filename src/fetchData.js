@@ -10,9 +10,9 @@ import axios from 'axios';
           'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
         }
       };
-      axios.request(options).then(function (response) {
+      axios.request(options).then(function(response){
           console.log(response.data);
-          return response.data;
+        //   return response.data;
       }).catch(function (error) {
           console.error(error);
       });
