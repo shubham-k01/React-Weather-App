@@ -4,7 +4,8 @@ import SearchContext from "./SearchContext";
 const SearchState = (props)=>{
     const [search, setSearch] = useState('')
     const [loading,setLoading] = useState(false)
-    return (<SearchContext.Provider value={{search,setSearch,loading,setLoading}}>
+    const [data,setData] = useState({})
+    return (<SearchContext.Provider value={{search,setSearch,loading,setLoading,data,setData}}>
         {props.children}
     </SearchContext.Provider>)
 }

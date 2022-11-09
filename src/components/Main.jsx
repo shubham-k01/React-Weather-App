@@ -7,19 +7,19 @@ import SearchContext from '../contexts/Search/SearchContext'
 const Main = () => {
   const s = useContext(SearchContext)
   const pred =[
-    {prop:'Local time',val:s?.search?.location?.localtime},
-    {prop: 'Temperature in C',value: s?.search?.current?.temp_c},
-    {prop:'Temperature in F',value: s?.search?.current?.temp_f},
-    {prop:'Prediction',value: s?.search?.current?.condition?.text},
-    {prop:'pr_icon',value: s?.search?.current?.condition?.icon},
-    {prop:'Wind in MPH',value: s?.search?.current?.wind_mph},
-    {prop:'Wind in KPH',value: s?.search?.current?.wind_kph},
-    {prop: 'Wind Degree',value: s?.search?.current?.wind_degree},
-    {prop: 'Wind Direction',value: s?.search?.current?.wind_dir},
-    {prop: 'Humidity',value:s?.search?.current?.humidity},
-    {prop: 'Clouds',value: s?.search?.current?.cloud},
-    {prop: 'Feelslike(C)',value: s?.search?.current?.feelslike_c},
-    {prop: 'Feelslike(F)',value: s?.search?.current?.feelslike_f}
+    {prop:'Local time',value:s?.data?.location?.localtime},
+    {prop: 'Temperature in C',value: s?.data?.current?.temp_c},
+    {prop:'Temperature in F',value: s?.data?.current?.temp_f},
+    {prop:'Prediction',value: s?.data?.current?.condition?.text},
+    {prop:'pr_icon',value: s?.data?.current?.condition?.icon},
+    {prop:'Wind in MPH',value: s?.data?.current?.wind_mph},
+    {prop:'Wind in KPH',value: s?.data?.current?.wind_kph},
+    {prop: 'Wind Degree',value: s?.data?.current?.wind_degree},
+    {prop: 'Wind Direction',value: s?.data?.current?.wind_dir},
+    {prop: 'Humidity',value:s?.data?.current?.humidity},
+    {prop: 'Clouds',value: s?.data?.current?.cloud},
+    {prop: 'Feelslike(C)',value: s?.data?.current?.feelslike_c},
+    {prop: 'Feelslike(F)',value: s?.data?.current?.feelslike_f}
   ]
 
   return (
@@ -35,20 +35,22 @@ const Main = () => {
                 <Typography variant='h4'>
                   {s.search}
                 </Typography>
+                <div>
                 {pred.map((element) => {
-                  if(element.name==='pr_icon'){
-                    return (<Typography variant='body1' key={element.name}>
-                      <span>{element.name} : </span>
+                  if(element.prop==='pr_icon'){
+                    return (<Typography variant='body1' key={element.prop}>
+                      <span>Most Likely : </span>
                       <img src={element.value} alt="" style={{width:'25px',height:'20px'}}/>
                     </Typography>)
                   }
                   else{
-                   return (<Typography variant='body1' key={element.name}>
-                    <span>{element.name} : </span>
+                   return (<Typography variant='body1' key={element.prop}>
+                    <span>{element.prop} : </span>
                     <span>{element.value}</span>
                   </Typography>)
                   }
                 })}
+                </div>
               </div>)
             } 
               

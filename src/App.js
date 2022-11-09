@@ -1,7 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Main from './components/Main';
-import { useContext} from 'react';
 import SearchState from './contexts/Search/SearchState';
 
 function App() {

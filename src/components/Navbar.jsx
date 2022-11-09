@@ -15,9 +15,11 @@ const Navbar = () => {
     await s.setLoading(true)
     console.log(s.loading);
     await s.setSearch(value);
-    const data = await fetchData(value);
+    const d = await fetchData(value);
+    // const parsedData = await d.json();
     s.setLoading(false)
-
+    s.setData(d)
+    console.log(s.data)
   }
   return (
     <Stack direction='row' sx={{alignItems:'center',justifyContent:'space-between',position:'sticky',
