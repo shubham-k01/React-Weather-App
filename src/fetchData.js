@@ -5,15 +5,16 @@ import axios from 'axios';
   const url = 'https://weatherapi-com.p.rapidapi.com/current.json'
   const options = {
     method: 'GET',
-    url : 'https://weatherapi-com.p.rapidapi.com/current.json',
+    // url : 'https://weatherapi-com.p.rapidapi.com/current.json',
     params: {q: st || 'Mumbai'},
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_WEATHER_APP,
+      'X-RapidAPI-Key': process.env.REACT_APP_WEATHER_API_KEY,
       'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
     }
   };
   
-  // axios is a promise based HTTP-client so we can use  async await , we can also use the promise based approach
+  try{
+    // axios is a promise based HTTP-client so we can use  async await , we can also use the promise based approach
   //  and in the axios response we get data in data attribute 
   const { data } = await axios.get(url,options)
 
@@ -23,6 +24,10 @@ import axios from 'axios';
   // when we use fetch API we need to convert the HTTP reponse to json
   // const parsed = await data.json();
   return data;
+  }
+  catch(err){
+    return err
+  }
 }
 
 export default fetchData;
