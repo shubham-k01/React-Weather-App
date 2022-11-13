@@ -26,7 +26,8 @@ import axios from 'axios';
   return data;
   }
   catch(err){
-    return err
+    const {code, config, message} = err
+    return {code, config, message}
   }
 }
 

@@ -20,6 +20,10 @@ const Weather = () => {
         {prop: 'Feelslike(C)',value: s?.data?.current?.feelslike_c},
         {prop: 'Feelslike(F)',value: s?.data?.current?.feelslike_f}
       ]
+
+      const capitalize = (s)=>{
+        return s[0].toUpperCase()+s.slice(1)
+      }
   return (
     <Box display='flex' sx={{justifyContent:'center',alignItems:'center',backgroundImage:'url(https://cdn.pixabay.com/photo/2018/04/16/16/16/sunset-3325080_960_720.jpg)',backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPositionX:'center',backgroundPositionY:'center',height:'86vh'}}>
           <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',height:'500px',width:'700px',backgroundColor:'orange',border:'5px solid brown',borderRadius:'50px',opacity:'0.7'}}>
@@ -30,9 +34,9 @@ const Weather = () => {
             Loading...
         </Typography>
         </div>): 
-        (s.data && (<div>
+        (s.data.location ? (<div>
             <Typography variant='h4'>
-            {s.search}
+            {capitalize(s.search)}
             </Typography>
             <div>
             {pred.map((element) => {
@@ -50,8 +54,17 @@ const Weather = () => {
             }
             })}
             </div>
-        </div>)
-        )}
+        </div>):(
+            <div>
+                <Typography variant='h2'>
+                    ERROR
+                </Typography>
+                <Typography>
+                    Please provide a valid input
+                </Typography>
+            </div>
+        ))}
+        
               
           </Box>
     </Box>
