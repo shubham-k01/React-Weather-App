@@ -12,14 +12,16 @@ const Navbar = () => {
 
   const handleClick = async ()=>{
     const value = r.current.value || 'Mumbai';
+    // console.log(value);
     await s.setLoading(true)
-    console.log(s.loading);
+    // console.log(s.loading);
     await s.setSearch(value);
-    const d = await fetchData(value);
-    // const parsedData = await d.json();
-    s.setLoading(false)
-    s.setData(d)
-    console.log(s.data)
+    // console.log(s.search);
+    const d = await fetchData(s.search);
+    console.log(d)
+    await s.setLoading(false)
+    // console.log(s.loading);
+    await s.setData(d)
   }
   return (
     <Stack direction='row' sx={{alignItems:'center',justifyContent:'space-between',position:'sticky',
