@@ -1,5 +1,5 @@
 import React , {useContext} from 'react'
-import { Typography, Box } from '@mui/material'
+import { Typography, Box, Stack } from '@mui/material'
 import SearchContext from '../contexts/Search/SearchContext'
 import location from '../location.png'
 
@@ -25,23 +25,28 @@ const Weather = () => {
         return s[0].toUpperCase()+s.slice(1)
       }
   return (
-    <Box display='flex' sx={{justifyContent:'center',alignItems:'center',backgroundImage:'url(https://cdn.pixabay.com/photo/2018/04/16/16/16/sunset-3325080_960_720.jpg)',backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPositionX:'center',backgroundPositionY:'center',height:'86vh'}}>
-          <Box sx={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',height:'500px',width:'700px',backgroundColor:'orange',border:'5px solid brown',borderRadius:'50px',opacity:'0.7'}}>
-            
-          {s.loading===true ? (<div>
-        <img src={location} alt=""  style={{height:'150px',width:'150px'}}/>
-        <Typography variant='h6' sx={{margin:{md:'15px',sm:'10px'}}}>
-            Loading...
-        </Typography>
-        </div>): 
-        (s.data.location ? (<div>
-            <Box display='flex' sx={{flexDirection:'row',justifyContent:'space-evenly',width:'750px',alignItems:'center'}}>
-                <Typography variant='h3'>
+    <Box sx={{background: 'linear-gradient(90deg, rgba(27,131,112,1) 0%, rgba(0,212,255,1) 100%)',height:'86vh'}}>
+          <Box>
+            {s.loading===true ? (<div>
+            <img src={location} alt=""  style={{height:'150px',width:'150px'}}/>
+            <Typography variant='h6' sx={{margin:{md:'15px',sm:'10px'}}}>
+                Loading...
+            </Typography>
+            </div>): 
+            (s.data.location ? (
+            <div>
+                <Typography variant='h4' color='#000' sx={{fontSize:'50px'}}>
                     {capitalize(s.search)}
                 </Typography>
-                <img src={pred[4].value} alt="" style={{height:'150px',width:'105px'}}/>
-
-            </Box>
+                <Stack sx={{width:'700px',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                    <Stack direction='row' sx={{width:'350px',justifyContent:'space-evenly',alignItems:'center',marginRight:'15px'}}>
+                        <Typography variant='body1' sx={{fontSize:'75px'}}>{pred[1].value}°C </Typography>
+                        <img src={pred[4].value} alt="" style={{height:'150px',width:'155px',opacity:'1'}}/>
+                    </Stack>
+                    <Typography variant='body1'>
+                        Local Time : {pred[0].value}
+                    </Typography>
+                </Stack>
             <div>
             {pred.map((element) => {
             if(element.prop==='pr_icon'){
