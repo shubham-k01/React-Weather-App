@@ -35,9 +35,13 @@ const Weather = () => {
         </Typography>
         </div>): 
         (s.data.location ? (<div>
-            <Typography variant='h4'>
-            {capitalize(s.search)}
-            </Typography>
+            <Box display='flex' sx={{flexDirection:'row',justifyContent:'space-evenly',width:'750px',alignItems:'center'}}>
+                <Typography variant='h3'>
+                    {capitalize(s.search)}
+                </Typography>
+                <img src={pred[4].value} alt="" style={{height:'150px',width:'105px'}}/>
+
+            </Box>
             <div>
             {pred.map((element) => {
             if(element.prop==='pr_icon'){
