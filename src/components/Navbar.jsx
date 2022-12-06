@@ -26,6 +26,16 @@ const Navbar = () => {
     await s.setData(d)
     navigate('/weather')
   }
+  const handleEnter = (event)=>{
+    // get the target button by event.target
+    event.target.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        handleClick();
+      }})
+  }
   return (
     <Stack direction='row' sx={{alignItems:'center',justifyContent:'space-between',position:'sticky',
     background: 'linear-gradient(90deg, rgba(27,131,112,1) 0%, rgba(0,212,255,1) 100%)'
@@ -36,7 +46,7 @@ const Navbar = () => {
         <Paper
         component='form'
         sx={{width:'300px',borderRadius:'20px',height:'25px',border:'2px solid blue',display:'flex',justifyContent:'space-between'}}>
-            <input type="text" placeholder='Search...' style={{border:'none',outline:'none',marginLeft:'10px'}} ref={r}/>
+            <input type="text" onKeyDown={handleEnter} placeholder='Search...' style={{border:'none',outline:'none',marginLeft:'10px'}} ref={r}/>
             <IconButton  onClick={handleClick}>
                 <Search sx={{color:'red'}}/>
             </IconButton>
