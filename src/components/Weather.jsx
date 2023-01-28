@@ -37,7 +37,7 @@ const Weather = () => {
             (s.data.location ? (
             <div>
                 <Typography variant='h4' color='#000' sx={{fontSize:'50px'}}>
-                    {capitalize(s.search)}
+                    {capitalize(s.data.location.name)}
                 </Typography>
                 {/* <Stack sx={{width:'700px',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                     <Stack direction='row' sx={{width:'350px',justifyContent:'space-evenly',alignItems:'center',marginRight:'15px'}}>
@@ -80,7 +80,7 @@ const Weather = () => {
                 <Stack sx={{display:'flex',flexDirection:{xs:'column',md:'row'},width:'95%',justifyContent:'center',alignItems:'center',marginTop:{sm:'15px',md:'25px'}}}>
                     <Box sx={{paddingRight:{xs:'20px',md:'35px'},borderRight:{md:'2px solid black'},borderBottom:{xs:'2px solid black',md:'0'},paddingBottom:{xs:'25px'}}}>
                         <Stack sx={{flexDirection:{sm:'column',md:'row'},marginRight:{sm:'5px',md:'25px'}}}>
-                        <i className="fa-solid fa-temperature-three-quarters fa-10x" ></i>
+                        <i className="fa-solid fa-temperature-three-quarters fa-10x" style={{color:' #ff9900'}}></i>
                         <Box sx={{margin:'auto',marginLeft:{md:'20px',xs:'5px'}}}>
                             <Typography variant='h6'>
                                 {pred[1].prop} : {pred[1].value}
@@ -99,7 +99,7 @@ const Weather = () => {
                     </Box>
                     <Box sx={{paddingLeft:{xs:'20px',md:'35px'},paddingTop:{xs:'25px',md:'0px'}}}>
                         <Stack sx={{flexDirection:{sxs:'column',md:'row'}}}>
-                        <i className="fa-solid fa-wind fa-10x"></i>
+                        <i className="fa-solid fa-wind fa-10x" style={{color:' #6666ff'}}></i>
                             <Box sx={{margin:'auto',marginLeft:{md:'20px',xs:'5px'}}}>
                                 <Typography variant='h6'>
                                     {pred[5].prop} : {pred[5].value}
@@ -138,8 +138,6 @@ const Weather = () => {
               
           </Box>
     </Box>
-    
-
   )
 }
 
